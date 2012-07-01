@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+// Key bindings definitions taken from: http://french.typeit.org/
+var chars = {};
+var keys = {};
+chars['a grave'] = { lower: '\u00E0', upper: '\u00C0' };
+chars['a circ'] = { lower: '\u00E2', upper: '\u00C2' };
+chars['ae'] = { lower: '\u00E6', upper: '\u00C6' };
+chars['c cedil'] = { lower: '\u00E7', upper: '\u00C7' };
+chars['e acute'] = { lower: '\u00E9', upper: '\u00C9' };
+chars['e grave'] = { lower: '\u00E8', upper: '\u00C8' };
+chars['e circ'] = { lower: '\u00EA', upper: '\u00CA' };
+chars['e uml'] = { lower: '\u00EB', upper: '\u00CB' };
+chars['i uml'] = { lower: '\u00EF', upper: '\u00CF' };
+chars['i circ'] = { lower: '\u00EE', upper: '\u00CE' };
+chars['o circ'] = { lower: '\u00F4', upper: '\u00D4' };
+chars['oe'] = { lower: '\u0153', upper: '\u0152' };
+chars['u grave'] = { lower: '\u00F9', upper: '\u00D9' };
+chars['u circ'] = { lower: '\u00FB', upper: '\u00DB' };
+chars['u uml'] = { lower: '\u00FC', upper: '\u00DC' };
+
+keys['Ctrl+A'] = [ chars['a grave'], chars['a circ'], chars['ae'] ];
+keys['Ctrl+C'] = [ chars['c cedil'] ];
+keys['Ctrl+E'] = [ chars['e acute'], chars['e grave'], chars['e circ'], chars['e uml'] ];
+keys['Ctrl+I'] = [ chars['i uml'], chars['i circ'] ];
+keys['Ctrl+O'] = [ chars['o circ'], chars['oe'] ];
+keys['Ctrl+U'] = [ chars['u grave'], chars['u circ'], chars['u uml'] ];
+keys['Ctrl+0'] = [ chars['o circ'], chars['oe'] ];
+
+
+//* Function inspired from: http://www.scottklarr.com/topic/425/how-to-insert-text-into-a-textarea-where-the-cursor-is/
+function insertAtCaret(areaId, text, iteration) {
+    var txtarea = document.getElementById(areaId);
+    var scrollPos = txtarea.scrollTop;
+    strPos = txtarea.selectionStart + ((iteration) ? 0 : 1);
+    
+    var front = (txtarea.value).substring(0, txtarea.selectionStart + ((iteration) ? -1 : 0));  
+    var back = (txtarea.value).substring(txtarea.selectionEnd, txtarea.value.length); 
+    
+    txtarea.value=front+text+back;
+    
+	txtarea.selectionStart = strPos;
+	txtarea.selectionEnd = strPos;
+	txtarea.focus();
+    txtarea.scrollTop = scrollPos;
+}
+
+//* The rest of the code below is under GNU Public Licence v3
+var shortcutString = "";
+var iterations = 0;
+
+function insertThat(obj)
+{
+ var currentShStr = "Ctrl+" + String.fromCharCode(obj.keyCode).toUpperCase();
+ if(obj.ctrlKey) {
+  if(currentShStr == shortcutString) {
+   iterations++;
+  } else {
+   iterations = 0;
+  }
+  shortcutString = currentShStr;
+  if(!iterations) {
+   insertAtCaret("fname", keys[currentShStr][iterations].lower, iterations);
+  } else {
+   insertAtCaret("fname", keys[currentShStr][iterations].lower, iterations);
+  }
+ }
+ return false;
+}
+
+function disableCtrlKeys(evt) {
+	if(evt.ctrlKey) {
+		return false;
+	}
+}
+
+function fullHeightTextarea() {
+	document.getElementById("fname").style.height = screen.height + "px";
+}
+
+document.onkeydown=insertThat;
+
+</script>
+
+</head>
+<body onload="fullHeightTextarea();">
+
+<textarea id="fname" style="height: 100%; width: 100%;" ></textarea>
+
+</body>
+</html>
+

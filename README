@@ -1,0 +1,26 @@
+This file is aimed to provide easy-to-use too for typing French text (with accents).
+
+It works this way: CTRL + letter.
+
+If you hit "letter" several times holding the CTRL key then it will switch between possible accents.
+
+Examples:
+
+CTRL + e = é
+
+CTRL + e + e = è
+
+CTRL + e + e + e = ê
+
+Etc. ... 
+
+CTRL + a = à
+
+
+The tool is VERY simplistic. It disables all CTRL + letter shortcuts in your browser.
+
+It does not handle capital letters... 
+
+
+
+Enjoy!
