@@ -61,13 +61,11 @@ function insertThat(obj)
    iterations = 0;
   }
   shortcutString = currentShStr;
-  if(!iterations) {
-   insertAtCaret("fname", keys[currentShStr][iterations].lower, iterations);
-  } else {
-   insertAtCaret("fname", keys[currentShStr][iterations].lower, iterations);
-  }
+  
+  insert = (obj.shiftKey) ? keys[currentShStr][iterations].upper : keys[currentShStr][iterations].lower;
+  insertAtCaret("fname", insert, iterations);
+  return false;
  }
- return false;
 }
 
 function disableCtrlKeys(evt) {

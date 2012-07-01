@@ -3,6 +3,7 @@ This file is aimed to provide easy-to-use too for typing French text (with accen
 It works this way: CTRL + letter.
 
 If you hit "letter" several times holding the CTRL key then it will switch between possible accents.
+If you want the capital letter, just press SHIFT.
 
 Examples:
 
@@ -16,11 +17,13 @@ Etc. ...
 
 CTRL + a = à
 
+CTRL + SHIFT + o = Ô
 
-The tool is VERY simplistic. It disables all CTRL + letter shortcuts in your browser.
+CTRL + SHIFT + o + o = Œ
 
-It does not handle capital letters... 
 
+
+The tool is VERY simplistic. It disables all "CTRL + letter" shortcuts in your browser.
 
 
 Enjoy!
